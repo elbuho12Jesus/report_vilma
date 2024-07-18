@@ -6,7 +6,12 @@
 \usepackage[dvipsnames]{xcolor}
 \usepackage{matlab-prettifier}
 \usepackage{array}
+\usepackage{amsthm}
 \usepackage{fullpage}
+
+ \theoremstyle{theorem}
+\newtheorem{structure}{Structure}%[section]
+
 
 \graphicspath{ {images/} }
 \usepackage{comment}
@@ -22,13 +27,16 @@
 \maketitle
 
 \begin{abstract} 
-This report is focused on explaining the \textbf{VILMA} funcionalities, we will not mention what datasets the \textbf{VILMA} tests ware made on, but rather we will explain how it selects the foil-caption to carry out the tests. Our report is structured as follows:
+\noindent This report is based on the seminar entitled {\it Visual grounding of verbs and nominalisations in multimodal models}, taken by Albert Gatt on May 29, 2024.
+In particular, I focus my attention on explaining the \textbf{VILMA} functionalities: I will not mention what datasets the \textbf{VILMA} tests ware made on, but rather I will explain how it selects the foil-caption to carry out the tests. The report is structured as follows:
 
-\textbf{Concepts section:} Concepts that are used in the report.
+\textbf{Previous concepts:} concepts that are used in the report.
 
-\textbf{Body section:} we list models that will be evaluated by VILMA and we explain the VILMA tests.
+\textbf{Video Language Model Assessment:} I list models that will be evaluated by VILMA and I explain the VILMA tests.
 
-\textbf{Bonclusions section:} We observe several models on which the VILMA tests were applied, and we give a conclusion on VILMA benchmarks.
+\textbf{Pretrained models:} I list models evaluated by VILMA.
+
+\textbf{Conclusions:} I observe several models on which the VILMA tests were applied, and I give a conclusion on VILMA benchmarks.
 
 
 
@@ -39,6 +47,8 @@ This report is focused on explaining the \textbf{VILMA} funcionalities, we will 
 
 \input{concepts}
 \input{body}
-\input{bibliography}
+\input{pretraining}
 \input{conclusion}
+\newpage
+\input{bibliography}
 \end{document}          

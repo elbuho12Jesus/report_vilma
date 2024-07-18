@@ -1,24 +1,26 @@
 \subsection{Pretrained VidLMs:}
 Models used in this benchmark of VILMA.
 \textbf{Unimodel Models:}
-Modelos basados en solo texto (i.e. text-only MLs), tenemos 2 tipos:
-
-decoder-only models: estos se enfocan en generar y predecir aspectos de tareas del lenguage como modelado del lenguaje, completacion de texto y generacion de texto, para los benchamarks se tiene:
+Only-text based models (i.e. text-only MLs).
+I identified two kinds of models:
+the first one is the decoder-only models, focusing on generating and predicting aspects of the language tasks, such as language modelling, text completion and text generation. For testing VILMA, it has been used
 \begin{itemize}
 \item GPT2-2
 \end{itemize}
-Encoder-decoder models:Estos son los mismos que sequence-to-sequence, estos modelos procesan como input una sequencia a la cual se le debe asignar otra sequencia como respuesta, como por ejemplo traducion, resumir un texto y responder preguntas, para los benchmark se tiene:
+Secondly, the encoder-decoder models, that are the same as the
+sequence-to-sequence models. They input a sequence which will be assigned another sequence as an answer, for example text translation, summarize a text and answer questions. For testing VILMA, it has been used
 \begin{itemize}
 \item T5
 \item BART
 \item BOTH
 \end{itemize}
-and for both:
+and for both, single encoder and encoder-decoder, namely:
 \begin{itemize}
 \item OPT
 \end{itemize}
-Al igual que VALSE se calcula los perplexity values para ambos caption y foil, y tomamos el text intput con menor perpelxiti escore.
-Parametros usados:
+
+Similarly to VALSE, the perplexity values are computed for both captions and foil-captions, and the text input with lower perplexity scores are taken.
+Used parameters:
 \begin{itemize}
 \item GPT-2 124M
 \item OPT 6.7B
@@ -26,17 +28,17 @@ Parametros usados:
 
 
 \textbf{Image Language Models:}
-La definicion de una Image Language model se encuentra en la subsecion \ref{ilm}.
-Los modelos usados para los benchmarks son:
+The definition of an Image Language model has been previously introduced in \ref{ilm}.
+The models used for VILMA are:
 \begin{itemize}
 \item CLIP
 \item BLIP
 \end{itemize}
-Ambos con OPT model.
+For encoder-text, both uses OPT model.
  
 \textbf{Video Language Models:}
-La definicion de Video Lnaguage Model se encuentra subsection \ref{vlm}.
-Listado de Modelos usados pata benchmark:
+The definition of Video Language Model has reported in subsection \ref{vlm}.
+Hereinafter, the list of models used for VILMA:
 \begin{itemize}
 \item ClipBERT:
 \begin{itemize}
@@ -44,8 +46,8 @@ Listado de Modelos usados pata benchmark:
 \item Video-encoder: Resnet-50
 \item Features:
 \begin{enumerate}
-\item Este pretrainet usa solamente imagenes.
-\item No aprende orden temporal: El escore de similitud de Video-text es el promedio de el escore de similitud de frame-text.
+\item This pretrained model uses only images.
+\item No temporal order: the video-text similarity score is the average frame-text similarity score.
 \end{enumerate}
 \end{itemize}
 \end{itemize}
@@ -71,7 +73,7 @@ Listado de Modelos usados pata benchmark:
 \item Video-encoder: S3D
 \item Features:
 \begin{enumerate}
-\item it uses mean pooling to fuse modalities, this is similar to the Video-text similarity score for ClipBERT.
+\item It uses mean pooling to fuse modalities, this is similar to the Video-text similarity score for ClipBERT.
 \item VideoCLIP is pretrained on HowTo100M.
 \end{enumerate}
 \end{itemize}
@@ -84,8 +86,8 @@ Listado de Modelos usados pata benchmark:
 \item Video-encoder: TimeSFormer
 \item Features:
 \begin{enumerate}
-\item it be able to be pretrained on images(CC3M) and videos(W2).
-\item it creates a shared video-text space through contrastive learning. 
+\item It be able to be pretrained on images(CC3M) and videos(W2).
+\item It creates a shared video-text space through contrastive learning. 
 \end{enumerate}
 \end{itemize}
 \end{itemize}
@@ -116,12 +118,12 @@ Listado de Modelos usados pata benchmark:
 \item Video-encoder: Video Swin Transformer
 \item Features:
 \begin{enumerate}
-\item it be able to be pretrained on images(CC3M) and videos(YT-Temporal, WebVid).
+\item It could be pre-trained on images (CC3M) and videos (YT-Temporal, WebVid).
 \item Spatial and temporal dimensions of the video inputs are modelled by positional embeddings considering both spatial and temporal ordering. 
 \end{enumerate}
 \end{itemize}
 \end{itemize}
-
+\newpage
 \begin{itemize}
 \item 	X-Clip:
 \begin{itemize}
@@ -135,10 +137,10 @@ Listado de Modelos usados pata benchmark:
 \end{itemize}
 \end{itemize}
 
-MCQ(Definition in section\ref{mcq_model}): A pretext task using Multiple Choice Questions (MCQ) was introduced for video-text pretraining, utilizing a dual-encoder approach. This involved a parametric module named BridgeFormer, which links local features from both VideoFormer and TextFormer to address multiple-choice questions through a contrastive learning objective. This method enhances the semantic connections between video and text representations, improving detailed semantic associations between the two modalities. Furthermore, it ensures high efficiency for retrieval, and the BridgeFormer can be omitted for downstream tasks.
+MCQ (Definition in section\ref{mcq_model}): A pretext task using Multiple Choice Questions (MCQ) was introduced for video-text pretraining, utilizing a dual-encoder approach. This involved a parametric module named BridgeFormer, which links local features from both VideoFormer and TextFormer to address multiple-choice questions through a contrastive learning objective. This method enhances the semantic connections between video and text representations, improving detailed semantic associations between the two modalities. Furthermore, it ensures high efficiency for retrieval, and the BridgeFormer can be omitted for downstream tasks.
 
 \begin{itemize}
-\item Singularity:
+\item Singularity \cite{jei2022}:
 \begin{itemize}
 \item Text-encoder: BERT
 \item Video-encoder: ViT
@@ -152,16 +154,16 @@ MCQ(Definition in section\ref{mcq_model}): A pretext task using Multiple Choice 
 \begin{figure}[h]
     \centering
     \includegraphics[width=0.55\textwidth]{singularity_model}
-    \caption{Process of the Singularity model}
+    \caption{Process of the Singularity model \cite[Figure 1]{jei2022}.}
     \label{fig:singularity_m}
 \end{figure}
 
-UniPerceiver: It is used for perception tasks in videos. The model is designed to handle zero-shot and few-shot learning situations. UniPerceiver was inspired by the Transformer architecture but uses CNN for a variety of modalities such as text, images and videos. See Figure \ref{fig:uniPerceiver_m}
+UniPerceiver: It is used for perception tasks in videos. The model is designed to handle zero-shot and few-shot learning situations. UniPerceiver was inspired by the Transformer architecture but uses CNN for a variety of modalities such as text, images and videos \cite{zhu2022pretraining}, see Figure \ref{fig:uniPerceiver_m}.
 
 \begin{figure}[h]
     \centering
     \includegraphics[width=0.55\textwidth]{uniPerceiver_model}
-    \caption{Process of the UniPerceiver model}
+    \caption{Process of the UniPerceiver model \cite[Figure 1]{zhu2022pretraining}.}
     \label{fig:uniPerceiver_m}
 \end{figure}
 
